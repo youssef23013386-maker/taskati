@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:taskati/core/styles/colors.dart';
 import 'package:taskati/core/styles/text_styles.dart';
 
-class MainButton extends StatelessWidget {
-  const MainButton({
+class TabButton extends StatelessWidget {
+  const TabButton({
     super.key,
     required this.text,
     required this.onPressed,
-    this.bgColor = AppColors.primaryColor,
-    this.height = 55,
-    this.width = double.infinity,
+    this.bgColor = AppColors.accentColor,
+    this.height = 35,
+    this.width = 50,
     this.textStyle,
   });
   final String text;
@@ -24,7 +24,9 @@ class MainButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: bgColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        elevation: 0,
+        padding:const EdgeInsets.symmetric(horizontal: 16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(9)),
         minimumSize: Size(width, height),
       ),
       onPressed: onPressed,
@@ -32,9 +34,9 @@ class MainButton extends StatelessWidget {
         text,
         style:
             textStyle ??
-            TextStyles.body.copyWith(
-              color: AppColors.backgroundColor,
-              fontWeight: FontWeight.w600,
+            TextStyles.caption1.copyWith(
+              color: AppColors.primaryColor,
+              fontWeight: FontWeight.w500,
             ),
       ),
     );

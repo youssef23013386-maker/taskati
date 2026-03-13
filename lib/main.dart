@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:taskati/core/constants/app_images.dart';
 import 'package:taskati/core/styles/colors.dart';
@@ -18,21 +20,25 @@ class MainApp extends StatelessWidget {
       theme: AppThemes.light,
       home:SplashScreen(),
       builder: (context, child) {
-        return  Stack(
-      children: [
-        Container(
-          height: double.infinity,
-          width: double.infinity,
-          color: AppColors.backgroundColor,
-        ),
-        Image.asset(
-          AppImages.backgraound,
-          height: double.infinity,
-          width: double.infinity,
-          fit: BoxFit.cover,
-        ),
-        child ?? Container(),
-        ] );
+        return  SafeArea(
+          top: false,
+          bottom: Platform.isAndroid,
+          child: Stack(
+                children: [
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            color: AppColors.backgroundColor,
+          ),
+          Image.asset(
+            AppImages.backgraound,
+            height: double.infinity,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
+          child ?? Container(),
+          ] ),
+        );
       }
     );
   }

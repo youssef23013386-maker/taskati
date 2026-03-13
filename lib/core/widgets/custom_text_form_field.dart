@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskati/core/styles/colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -11,6 +12,7 @@ class CustomTextFormField extends StatelessWidget {
     this.enabled = true,
     this.onTap,
     this.onChanged,
+    this.controller,
   });
   final String? hintText;
   final Widget? prefixIcon;
@@ -20,20 +22,35 @@ class CustomTextFormField extends StatelessWidget {
   final bool enabled;
   final Function()? onTap;
   final Function(String)? onChanged;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      enabled: enabled,
-      keyboardType: keyboardType,
-      decoration: InputDecoration(
-        prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon,
-        hintText: hintText,
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.backgroundColor,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.primaryColor.withValues(alpha: 0.1),
+            blurRadius: 6,
+            offset: const Offset(0,5)
+          )
+        ]
       ),
-      validator: validator,
-      onTap: onTap,
-      onChanged: onChanged,
+      child: TextFormField(
+        controller: controller ,
+        enabled: enabled,
+        keyboardType: keyboardType,
+        decoration: InputDecoration(
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
+          hintText: hintText,
+        ),
+        validator: validator,
+        onTap: onTap,
+        onChanged: onChanged,
+      ),
     );
   }
 }

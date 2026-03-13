@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Lottie.asset(AppImages.logojson, width: 250),
             const Text('Taskati', style: TextStyles.headline),
             Text(
-              'It/’s time to get organized',
+              'It’s time to get organized',
               style: TextStyles.caption1.copyWith(
                 color: AppColors.sacndaryColor,
               ),
